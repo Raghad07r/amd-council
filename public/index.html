@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مجلس مستشار أمد — الوعي المالي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <i class="ti ti-building-bank"></i>
+      </div>
+      <div>
+        <div class="brand-name">أمـد</div>
+        <div class="brand-sub">مجلس الوعي المالي</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">أعضاء المجلس</div>
+
+    <div class="member-card" id="card-planner">
+      <div class="member-avatar" style="--c:#1D9E75">س</div>
+      <div class="member-info">
+        <div class="member-name">سلمان</div>
+        <div class="member-role">المخطط المالي</div>
+      </div>
+      <div class="member-status" id="status-planner"></div>
+    </div>
+
+    <div class="member-card" id="card-risk">
+      <div class="member-avatar" style="--c:#185FA5">ن</div>
+      <div class="member-info">
+        <div class="member-name">نورة</div>
+        <div class="member-role">محللة المخاطر</div>
+      </div>
+      <div class="member-status" id="status-risk"></div>
+    </div>
+
+    <div class="member-card" id="card-behavior">
+      <div class="member-avatar" style="--c:#B86A0A">ف</div>
+      <div class="member-info">
+        <div class="member-name">فهد</div>
+        <div class="member-role">خبير السلوك</div>
+      </div>
+      <div class="member-status" id="status-behavior"></div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="compliance-badge">
+        <i class="ti ti-shield-check"></i>
+        <span>متوافق مع SAMA & SDAIA</span>
+      </div>
+      <div class="ai-notice">
+        <i class="ti ti-robot"></i>
+        هذا نظام ذكاء اصطناعي — ليس استشارة مرخصة
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="chat-header">
+      <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="ti ti-layout-sidebar-right"></i>
+      </button>
+      <div class="header-center">
+        <span class="header-title">جلسة المجلس</span>
+        <span class="header-dot"></span>
+        <span class="header-sub">٣ مستشارين · نقاش حي</span>
+      </div>
+      <button class="new-session-btn" onclick="newSession()">
+        <i class="ti ti-plus"></i> جلسة جديدة
+      </button>
+    </header>
+
+    <!-- Chat -->
+    <div class="chat-area" id="chat-area">
+
+      <!-- Welcome -->
+      <div class="welcome-wrap" id="welcome">
+        <div class="welcome-icon">
+          <i class="ti ti-users-group"></i>
+        </div>
+        <h1 class="welcome-title">مرحباً بك في مجلس أمد</h1>
+        <p class="welcome-desc">
+          اطرح وضعك المالي أو سؤالك، وسيتناقش المستشارون الثلاثة فيما بينهم
+          ومعك للوصول لأفضل توصية تخدم مصلحتك.
+        </p>
+        <div class="suggestions-grid">
+          <button class="sug" onclick="useSug(this)">
+            <i class="ti ti-wallet"></i>
+            راتبي 10,000 ريال ولا أعرف كيف أوزع ميزانيتي الشهرية
+          </button>
+          <button class="sug" onclick="useSug(this)">
+            <i class="ti ti-chart-line"></i>
+            هل أستثمر في صناديق الأسهم أم أضع المال في وديعة ثابتة؟
+          </button>
+          <button class="sug" onclick="useSug(this)">
+            <i class="ti ti-piggy-bank"></i>
+            أريد ادخار 50,000 ريال خلال سنتين، من أين أبدأ؟
+          </button>
+          <button class="sug" onclick="useSug(this)">
+            <i class="ti ti-credit-card"></i>
+            عندي قرض شخصي وأريد أستثمر في نفس الوقت، هل هذا صحيح؟
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages will be injected here -->
+      <div id="messages"></div>
+
+    </div>
+
+    <!-- Input -->
+    <div class="input-wrap">
+      <div class="input-box">
+        <textarea
+          id="user-input"
+          placeholder="اكتب سؤالك المالي هنا... (Shift+Enter لسطر جديد)"
+          rows="1"
+          onkeydown="handleKey(event)"
+          oninput="autoResize(this)"
+        ></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMessage()">
+          <i class="ti ti-send-2"></i>
+        </button>
+      </div>
+      <div class="input-hint">المجلس لا يخزن بياناتك · جلسة خاصة وآمنة</div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
